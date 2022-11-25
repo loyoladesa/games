@@ -1,5 +1,6 @@
 package programa_leitura;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -33,6 +34,12 @@ public class PrimeiroJogo {
 		System.out.println("z: Sair pela porta 3");
 		System.out.println("s: sair do jogo.");
 	}
+	
+	public static void limpatela() { 
+		//for (int i = 0; i < 20; i++) System.out.println ("\\ n");
+        	         
+	}
+		
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -89,7 +96,7 @@ public class PrimeiroJogo {
 		System.out.println("Insira seu nome:");
 		jogador.setNome(in.nextLine());
 		
-		System.out.println("---------------");
+		System.out.println("------------------------------------------------------------------------------------------------");
 		
 		System.out.println("HISTÓRIA:");
 		System.out.println("No Reino de Malastril, um terrível Mago enfeitiçou o Rei e a Rainha.");
@@ -98,19 +105,22 @@ public class PrimeiroJogo {
 		System.out.println("Essa esmeralda está em uma caverna protegida por guerreiros e criaturas horrendas!");
 		System.out.println("Os nobres de Malastril contrataram um Cavaleiro para poder entrar na Caverna e sair com a Esmeralda!");
 		System.out.println("Cavaleiro "+jogador.getNome()+" o Reino de Malastril lhe entrega uma espada e poção(que recupera as energias).");
-		System.out.println("Você deve entrar na Caverna e retornar com a Esmeralda em sua Mochila.");	
+		System.out.println("Você deve entrar na Caverna e retornar com a Esmeralda em sua Mochila.");		
+		System.out.println("------------------------------------------------------------------------------------------------");
 		
 		
 		
-		System.out.println("##############");	
+		
+		
 		
 		while(jogador.estaVivo()) {
 			
 			if(jogador.getPos()==10) {
 				jogador.setEnergia(-1);
 			}else {
-				System.out.println("xxxxx RODADA xxxxxxxxxx");
-				System.out.println("Personagem:");
+				System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+				System.out.println();
+				//System.out.println("Personagem:");
 				jogador.mostrar();
 				
 				
@@ -122,20 +132,24 @@ public class PrimeiroJogo {
 				if(sala.getInimigo().estaVivo()) {
 					System.out.println("Existe um Inimigo na Sala:");
 					sala.getInimigo().mostrar();
-					System.out.println("###############");
+					//System.out.println("###############");
+					System.out.println("");
+					System.out.println("");
 					menuComInimigo();
 					comando = in.nextLine();
-					
+					limpatela();
 					switch(comando) {
 					case "m":
 						jogador.mostrarMochila();
+						System.out.println("");
 						break;
 					case "p":
 						if (jogador.tomarPocao()) {
 							System.out.println("Energia: "+jogador.getEnergia());
 						}else {
 							System.out.println("Não há poção para ser tomada");
-						}				
+						}
+						System.out.println("");
 						break;
 					case "a":
 					    int dano = jogador.ataque();	
@@ -154,6 +168,7 @@ public class PrimeiroJogo {
 							System.out.println("Você matou o Inimigo");						
 						}	
 						sala.setInimigo(inimigo);
+						System.out.println("");
 						break;
 						
 					case "c":
@@ -181,55 +196,67 @@ public class PrimeiroJogo {
 										System.out.println("Esta porta está trancada! Você precisa de uma chave!");
 									}
 								}
-								
+								System.out.println("");
 								break;
 							case "s":
 								jogador.setEnergia(-1);
+								System.out.println("");
 								break;
 							}
 							
 						}else {
 							System.out.println("Você não conseguiu!");
 						}
+						System.out.println("");
 						break;
 					case "v":
 						jogador.setPos(sala.getSaidas()[0]);
+						System.out.println("");
 						break;
 					case "s":
 						jogador.setEnergia(-1);
+						System.out.println("");
 						break;
 					}			
 					
 				}else {
 					System.out.println("Não Existe Inimigo na Sala");
-					System.out.println("###############");
+					//System.out.println("###############");
+					System.out.println("");
+					System.out.println("");
 					menu();
 					Scanner l = new Scanner(System.in);
 					String saida = l.nextLine();
+					limpatela();
 					
 						
 					switch(saida) {
 					
 					case "m":
 						jogador.mostrarMochila();
+						System.out.println("");
 						break;
 					case "p":
 						if (jogador.tomarPocao()) {
 							System.out.println("Energia: "+jogador.getEnergia());
 						}else {
 							System.out.println("Não há poção para ser tomada");
-						}				
+						}
+						System.out.println("");
 						break;
 					case "x":
 						String objeto = jogador.retiraObjeto();
 						jogador.colocarMochila(sala.getObjeto());
 						sala.setObjeto(objeto);
+						System.out.println("");
 						break;
 					case "w":
-						jogador.setPos(sala.getSaidas()[0]);						
+						jogador.setPos(sala.getSaidas()[0]);
+						System.out.println("");
 						break;
 					case "y":
 						jogador.setPos(sala.getSaidas()[1]);
+						System.out.println("");
 						break;
 					case "z":
 						if(sala.getNome().equals("Sala Trancada")) {
@@ -241,9 +268,11 @@ public class PrimeiroJogo {
 						}else {
 							jogador.setPos(sala.getSaidas()[2]);
 						}
+						System.out.println("");
 						break;
 					case "s":
 						jogador.setEnergia(-1);
+						System.out.println("");
 						break;				
 					}
 				}

@@ -115,13 +115,13 @@ public class Personagem {
 	
 	public void mostrar() {
 		System.out.println("Nome: "+nome);
-		System.out.println("Força: "+forca);
+		System.out.print("Força: "+forca+"  ");
 		System.out.println("Energia: "+energia);
 		
 		if(this.jogador) {
 			System.out.println("Mochila: "+ mochila[0]+","+mochila[1]+","+mochila[2]);
 		}		
-		System.out.println("----");
+		System.out.println("------------------------------------------------------------------------------------------------");
 	}
 	
 	
